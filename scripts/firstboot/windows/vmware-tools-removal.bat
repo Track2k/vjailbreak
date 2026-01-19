@@ -59,7 +59,7 @@ echo for /f "usebackq tokens=*" %%%%A in ^(`powershell -NoProfile -Command "Get-
 echo. >> "%STARTUP_SCRIPT%"
 echo if not "%%GUID%%"=="" ^( >> "%STARTUP_SCRIPT%"
 echo     echo      Found GUID: %%GUID%%. Uninstalling... >> "%STARTUP_SCRIPT%"
-echo     "%%MSI_PATH%%" /x %%GUID%% /qn /norestart /L*v "%%MSI_LOG%%" >> "%STARTUP_SCRIPT%"
+echo     "%%MSI_PATH%%" /x %%GUID%% /qn VM_SENDMSILOGTOHOST=0 /norestart /L*v "%%MSI_LOG%%" >> "%STARTUP_SCRIPT%"
 echo     echo [%%DATE%% %%TIME%%] MSI Uninstall command sent for %%GUID%% ^>^> "%%LOGFILE%%" >> "%STARTUP_SCRIPT%"
 echo ^) else ^( >> "%STARTUP_SCRIPT%"
 echo     echo      No MSI entry found in Control Panel. ^>^> "%%LOGFILE%%" >> "%STARTUP_SCRIPT%"
